@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Weather</title>
+
+    <link rel="import" href="bower_components/app-layout/app-header-layout/app-header-layout.html">
+    <link rel="import" href="bower_components/app-layout/app-header/app-header.html">
+    <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
+    <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+
+    <style is="custom-style">
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        background-color: #eee;
+      }
+
+      app-header {
+        background-color: #4285f4;
+        color: #fff;
+      }
+
+      paper-card {
+        width: calc(100% - 4em);
+        margin: 1em 2em;
+      }
+    </style>
+
+  </head>
+  <body>
+    <app-header-layout>
+      <app-header fixed condenses effects="waterfall">
+          <app-toolbar>
+            <span main-title>Weather</span>
+            <paper-icon-button icon="add">+</paper-icon-button>
+          </app-toolbar>
+        </app-header>
+        <div>
+          <paper-card class="layout horizontal">
+            <div class="card-content">
+              <weather-info city="Lugano"></weather-info>
+            </div>
+          </paper-card>
+        </div>      
+    </app-header-layout>
+  </body>
+</html>
