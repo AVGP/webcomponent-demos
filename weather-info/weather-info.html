@@ -13,12 +13,32 @@
 
   class WeatherInfo extends HTMLElement {
 
+    static get observedAttributes() {
+      return [ 'city', 'imperial' ]
+    }
+
+    get city() { return this.getAttribute('city') }
+    set city(newCity) { this.setAttribute('city', newCity) }
+
+    get imperial() { return this.hasAttribute('imperial') }
+    set imperial(isImperial) {
+      if(isImperial) {
+        this.setAttribute('imperial', '')
+      } else {
+        this.removeAttribute('imperial')
+      }
+    }
+
+    attributeChangedCallback(name, oldVal, newVal) {
+      //this.update()
+    }
+
     connectedCallback() {
       this.attachShadow({ mode: 'open' })
       const content = document.importNode(tpl, true)
       this.shadowRoot.appendChild(content)
 
-      // initial load
+      //this.update()
     }
 
   }
