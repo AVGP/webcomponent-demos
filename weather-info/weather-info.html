@@ -9,9 +9,16 @@
 </template>
 
 <script>
+  const tpl = (document.currentScript || document._currentScript).ownerDocument.querySelector('template').content
+
   class WeatherInfo extends HTMLElement {
 
     connectedCallback() {
+      this.attachShadow({ mode: 'open' })
+      const content = document.importNode(tpl, true)
+      this.shadowRoot.appendChild(content)
+
+      // initial load
     }
 
   }
