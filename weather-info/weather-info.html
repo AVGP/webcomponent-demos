@@ -30,7 +30,7 @@
     }
 
     attributeChangedCallback(name, oldVal, newVal) {
-      //this.update()
+      this.update()
     }
 
     connectedCallback() {
@@ -38,7 +38,27 @@
       const content = document.importNode(tpl, true)
       this.shadowRoot.appendChild(content)
 
-      //this.update()
+      this.update()
+    }
+
+    update() {
+      this.shadowRoot.querySelector('#city').textContent = this.city
+      // fetch from open weather API
+      const unit = this.imperial ? 'imperial' : 'metric'
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=${unit}&appid=6fb16872c800649a6f7a568cccda7475`)
+      .then((result) => { return result.json() })
+      .then((result) => {
+        this.shadowRoot.querySelector('#temperature').textContent = `${result.main.temp} °${this.imperial ? 'F' : 'C'}`
+        this.shadowRoot.querySelector('#description').textContent = result.weather[0].main
+        this.shadowRoot.querySelector('img').src = `http://openweathermap.org/img/w/${result.weather[0].icon}.png`
+
+        this.dispatchEvent(new CustomEvent('load', {
+          detail: {
+            temperature: `${result.main.temp} °${this.imperial ? 'F' : 'C'}`,
+            description: result.weather[0].main
+          }
+        }))
+      })
     }
 
   }
