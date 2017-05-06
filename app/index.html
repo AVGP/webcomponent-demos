@@ -12,6 +12,7 @@
     <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="bower_components/iron-localstorage/iron-localstorage.html">
     <link rel="import" href="bower_components/paper-card/paper-card.html">
+    <link rel="import" href="../weather-info/weather-info.html">
 
     <style is="custom-style">
       body {
@@ -46,7 +47,7 @@
             <template id="list" is="dom-repeat" items="{{locations}}">
               <paper-card class="layout horizontal">
                 <div class="card-content">
-                  [[item]]
+                  <weather-info city="[[item]]"></weather-info>
                 </div>
               </paper-card>
             </template>
