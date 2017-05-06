@@ -1,0 +1,20 @@
+<template id="weather-info">
+  <h1>
+    <img>
+    Weather in <span id="city"></span>:
+  </h1>
+  <p>
+    <span id="temperature"></span> - <span id="description"></span>
+  </p>
+</template>
+
+<script>
+  class WeatherInfo extends HTMLElement {
+
+    connectedCallback() {
+    }
+
+  }
+
+  customElements.define('weather-info', WeatherInfo)
+</script>
