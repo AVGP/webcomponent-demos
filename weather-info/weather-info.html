@@ -22,7 +22,7 @@
 
     get imperial() { return this.hasAttribute('imperial') }
     set imperial(isImperial) {
-      if(isImperial) {
+      if (isImperial) {
         this.setAttribute('imperial', '')
       } else {
         this.removeAttribute('imperial')
@@ -33,12 +33,11 @@
       this.update()
     }
 
-    connectedCallback() {
+    constructor() {
+      super()
       this.attachShadow({ mode: 'open' })
       const content = document.importNode(tpl, true)
       this.shadowRoot.appendChild(content)
-
-      this.update()
     }
 
     update() {
